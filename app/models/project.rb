@@ -6,6 +6,7 @@ class Project < ApplicationRecord
   acts_as_list scope: :profile
 
   validates :title, :slug, :short_description, presence: true
+  validates :slug, uniqueness: true
 
   scope :ordered, -> { order(position: :asc) }
 

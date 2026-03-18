@@ -42,8 +42,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_192931) do
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id", "position"], name: "index_projects_on_profile_id_and_position"
-    t.index ["profile_id", "slug"], name: "index_projects_on_profile_id_and_slug", unique: true
     t.index ["profile_id"], name: "index_projects_on_profile_id"
+    t.index ["slug"], name: "index_projects_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|
