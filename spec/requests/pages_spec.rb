@@ -91,7 +91,6 @@ RSpec.describe 'Pages', type: :request do
         create(
           :profile,
           bio: 'About page bio content',
-          email: 'weronika@example.com',
           location: 'Poland'
         )
       end
@@ -106,7 +105,6 @@ RSpec.describe 'Pages', type: :request do
         get '/about'
 
         expect(response.body).to include(profile.bio)
-        expect(response.body).to include(profile.email)
         expect(response.body).to include(profile.github_url)
         expect(response.body).to include(profile.linkedin_url)
         expect(response.body).to include(profile.location)

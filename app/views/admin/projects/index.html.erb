@@ -1,13 +1,13 @@
 <div class="admin-page-header">
   <div>
-    <h2 class="admin-page-header__title">Projects</h2>
+    <h2 class="admin-page-header__title"><%= t(".title") %></h2>
     <p class="admin-page-header__description">
-      Manage portfolio projects displayed on the website.
+      <%= t(".description") %>
     </p>
   </div>
 
   <div>
-    <%= link_to "New project", new_admin_project_path, class: "admin-button admin-button--primary" %>
+    <%= link_to t(".new"), new_admin_project_path, class: "admin-button admin-button--primary" %>
   </div>
 </div>
 
@@ -16,10 +16,10 @@
     <table class="admin-table">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Published</th>
-          <th>Featured</th>
-          <th>Position</th>
+          <th><%= Project.human_attribute_name(:title) %></th>
+          <th><%= Project.human_attribute_name(:published) %></th>
+          <th><%= Project.human_attribute_name(:featured) %></th>
+          <th><%= Project.human_attribute_name(:position) %></th>
           <th></th>
         </tr>
       </thead>
@@ -27,15 +27,15 @@
         <% @projects.each do |project| %>
           <tr>
             <td><%= project.title %></td>
-            <td><%= project.published? ? "Yes" : "No" %></td>
-            <td><%= project.featured? ? "Yes" : "No" %></td>
+            <td><%= project.published? ? t("common.yes") : t("common.no") %></td>
+            <td><%= project.featured? ? t("common.yes") : t("common.no") %></td>
             <td><%= project.position %></td>
             <td class="admin-table__actions">
-              <%= link_to "Show", admin_project_path(project.slug), class: "admin-button" %>
-              <%= link_to "Edit", edit_admin_project_path(project.slug), class: "admin-button" %>
-              <%= link_to "Delete",
+              <%= link_to t("common.show"), admin_project_path(project.slug), class: "admin-button" %>
+              <%= link_to t("common.edit"), edit_admin_project_path(project.slug), class: "admin-button" %>
+              <%= link_to t("common.delete"),
                           admin_project_path(project.slug),
-                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                          data: { turbo_method: :delete, turbo_confirm: t("admin.confirm_delete")  },
                           class: "admin-button admin-button--danger" %>
             </td>
           </tr>
@@ -46,8 +46,8 @@
 <% else %>
   <div class="admin-card">
     <div class="admin-card__body">
-      <p>No projects added yet.</p>
-      <%= link_to "Create first project", new_admin_project_path, class: "admin-button admin-button--primary" %>
+      <p><%= t(".empty") %></p>
+      <%= link_to t("common.create_first_project"), new_admin_project_path, class: "admin-button admin-button--primary" %>
     </div>
   </div>
 <% end %>

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
   <div>
-    <h2 class="mb-1">Dashboard</h2>
-    <p class="text-muted mb-0">Manage your portfolio content.</p>
+    <h2 class="mb-1"><%= t(".title") %></h2>
+    <p class="text-muted mb-0"><%= t(".description") %></p>
   </div>
 </div>
 
@@ -9,9 +9,9 @@
   <div class="col-md-4">
     <div class="card h-100">
       <div class="card-body">
-        <h3 class="h5">Profile</h3>
-        <p class="text-muted">Edit your personal information and bio.</p>
-        <%= link_to 'View profile', admin_profile_path, class: 'btn btn-outline-primary' %>
+        <h3 class="h5"><%= t(".profile.title") %></h3>
+        <p class="text-muted"><%= t(".profile.description") %></p>
+        <%= link_to t(".profile.action"), admin_profile_path, class: "btn btn-outline-primary" %>
       </div>
     </div>
   </div>
@@ -19,9 +19,9 @@
   <div class="col-md-4">
     <div class="card h-100">
       <div class="card-body">
-        <h3 class="h5">Projects</h3>
-        <p class="text-muted">Preview future project management screens.</p>
-        <%= link_to 'View projects', admin_projects_path, class: 'btn btn-outline-primary' %>
+        <h3 class="h5"><%= t(".projects.title") %></h3>
+        <p class="text-muted"><%= t(".projects.description") %></p>
+        <%= link_to t(".projects.action"), admin_projects_path, class: "btn btn-outline-primary" %>
       </div>
     </div>
   </div>
@@ -29,9 +29,9 @@
   <div class="col-md-4">
     <div class="card h-100">
       <div class="card-body">
-        <h3 class="h5">Experience</h3>
-        <p class="text-muted">Preview future experience management screens.</p>
-        <%= link_to 'View experience', admin_experiences_path, class: 'btn btn-outline-primary' %>
+        <h3 class="h5"><%= t(".experience.title") %></h3>
+        <p class="text-muted"><%= t(".experience.description") %></p>
+        <%= link_to t(".experience.action"), admin_experiences_path, class: "btn btn-outline-primary" %>
       </div>
     </div>
   </div>

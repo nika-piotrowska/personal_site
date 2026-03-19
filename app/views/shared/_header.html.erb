@@ -1,12 +1,12 @@
 <header class="site-header">
   <div class="site-container site-header__inner">
-    <%= link_to "Weronika Piotrowska", root_path, class: "site-logo" %>
+    <%= link_to t("app.owner_name"), root_path, class: "site-logo" %>
 
-    <nav class="site-nav" aria-label="Main navigation">
-      <%= link_to "About", about_path, class: "site-nav__link" %>
-      <%= link_to "Projects", projects_path, class: "site-nav__link" %>
-      <%= link_to "Experience", experience_path, class: "site-nav__link" %>
-      <%= link_to "Contact", contact_path, class: "site-nav__link" %>
+    <nav class="site-nav" aria-label="<%= t('meta.navigation_aria_label') %>">
+      <%= link_to t("navigation.about"), about_path, class: "site-nav__link" %>
+      <%= link_to t("navigation.projects"), projects_path, class: "site-nav__link" %>
+      <%= link_to t("navigation.experience"), experience_path, class: "site-nav__link" %>
+      <%= link_to t("navigation.contact"), contact_path, class: "site-nav__link" %>
     </nav>
   </div>
 </header>

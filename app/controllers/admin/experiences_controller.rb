@@ -21,7 +21,7 @@ module Admin
       @experience = @profile.experiences.new(experience_params)
 
       if @experience.save
-        redirect_to admin_experiences_path, notice: 'Experience created successfully.'
+        redirect_to admin_experiences_path, notice: t('admin.flash.experiences.created')
       else
         render :new, status: :unprocessable_content
       end
@@ -29,7 +29,7 @@ module Admin
 
     def update
       if @experience.update(experience_params)
-        redirect_to admin_experiences_path, notice: 'Experience updated successfully.'
+        redirect_to admin_experiences_path, notice: t('admin.flash.experiences.updated')
       else
         render :edit, status: :unprocessable_content
       end
@@ -37,14 +37,14 @@ module Admin
 
     def destroy
       @experience.destroy
-      redirect_to admin_experiences_path, notice: 'Experience deleted successfully.'
+      redirect_to admin_experiences_path, notice: t('admin.flash.experiences.deleted')
     end
 
     private
 
     def set_profile
       @profile = current_user.profile
-      redirect_to new_admin_profile_path, alert: 'Create your profile first.' unless @profile
+      redirect_to new_admin_profile_path, alert: t('admin.flash.create_profile_first') unless @profile
     end
 
     def set_experience
