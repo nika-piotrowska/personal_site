@@ -66,7 +66,7 @@ RSpec.describe 'Admin::Projects', type: :request do
 
   describe 'GET /admin/projects/new' do
     context 'when profile exists' do
-      let!(:profile) { create(:profile, user: user) }
+      let!(:profile) { create(:profile, user: user) } # rubocop:disable RSpec/LetSetup
 
       it 'returns http success' do
         get new_admin_project_path

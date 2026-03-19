@@ -52,7 +52,7 @@ RSpec.describe 'Admin::Profiles', type: :request do
     end
 
     context 'when profile already exists' do
-      let!(:profile) { create(:profile, user: user) }
+      let!(:profile) { create(:profile, user: user) } # rubocop:disable RSpec/LetSetup
 
       it 'redirects to profile show page' do
         get new_admin_profile_path
@@ -64,7 +64,7 @@ RSpec.describe 'Admin::Profiles', type: :request do
 
   describe 'GET /admin/profile/edit' do
     context 'when profile exists' do
-      let!(:profile) { create(:profile, user: user) }
+      let!(:profile) { create(:profile, user: user) } # rubocop:disable RSpec/LetSetup
 
       it 'returns http success' do
         get edit_admin_profile_path
@@ -173,7 +173,7 @@ RSpec.describe 'Admin::Profiles', type: :request do
     end
 
     context 'when params are valid' do
-      it 'updates the profile' do
+      it 'updates the profile' do # rubocop:disable RSpec/MultipleExpectations
         patch admin_profile_path, params: valid_params
 
         profile.reload
