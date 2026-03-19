@@ -4,7 +4,11 @@ source 'https://rubygems.org'
 
 ruby '3.4.8'
 
+gem 'acts_as_list', '~> 1.2', '>= 1.2.6'
 gem 'bootsnap', require: false
+gem 'dartsass-rails', '~> 0.5.1'
+gem 'devise', '~> 5.0', '>= 5.0.3'
+gem 'devise-i18n', '~> 1.16'
 gem 'image_processing', '~> 1.2'
 gem 'importmap-rails'
 gem 'jbuilder'
@@ -29,10 +33,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'faker', '~> 3.6'
   gem 'web-console'
 end
 
 group :test do
   gem 'capybara'
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.4'
   gem 'selenium-webdriver'
 end

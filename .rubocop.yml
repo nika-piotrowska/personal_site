@@ -14,3 +14,16 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - "config/initializers/devise.rb"
+
+RSpec/MultipleExpectations:
+  Max: 3
+
+RSpec/ExampleLength:
+  Max: 10
+
+Naming/VariableNumber:
+  EnforcedStyle: normalcase
