@@ -21,10 +21,14 @@ class PagesController < ApplicationController
   end
 
   def published_projects
+    return Project.none unless current_profile
+
     current_profile.projects.published
   end
 
   def experiences
+    return Experience.none unless current_profile
+
     current_profile.experiences
   end
 

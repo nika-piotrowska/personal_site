@@ -2,37 +2,41 @@
   <p class="section-label">About</p>
   <h1>About me</h1>
 
-  <div class="content-card">
-    <p><%= simple_format(@profile.bio) %></p>
+  <% if @profile.present? %>
+    <div class="content-card">
+      <p><%= simple_format(@profile.bio) %></p>
 
-    <div class="profile-links">
-      <% if @profile.github_url.present? %>
-        <p>
-          <strong>GitHub:</strong>
-          <%= link_to @profile.github_url, @profile.github_url, target: '_blank', rel: 'noopener' %>
-        </p>
-      <% end %>
+      <div class="profile-links">
+        <% if @profile.github_url.present? %>
+          <p>
+            <strong>GitHub:</strong>
+            <%= link_to @profile.github_url, @profile.github_url, target: '_blank', rel: 'noopener' %>
+          </p>
+        <% end %>
 
-      <% if @profile.linkedin_url.present? %>
-        <p>
-          <strong>LinkedIn:</strong>
-          <%= link_to @profile.linkedin_url, @profile.linkedin_url, target: '_blank', rel: 'noopener' %>
-        </p>
-      <% end %>
+        <% if @profile.linkedin_url.present? %>
+          <p>
+            <strong>LinkedIn:</strong>
+            <%= link_to @profile.linkedin_url, @profile.linkedin_url, target: '_blank', rel: 'noopener' %>
+          </p>
+        <% end %>
 
-      <% if @profile.email.present? %>
-        <p>
-          <strong>Email:</strong>
-          <%= mail_to @profile.email %>
-        </p>
-      <% end %>
+        <% if @profile.email.present? %>
+          <p>
+            <strong>Email:</strong>
+            <%= mail_to @profile.email %>
+          </p>
+        <% end %>
 
-      <% if @profile.location.present? %>
-        <p>
-          <strong>Location:</strong>
-          <%= @profile.location %>
-        </p>
-      <% end %>
+        <% if @profile.location.present? %>
+          <p>
+            <strong>Location:</strong>
+            <%= @profile.location %>
+          </p>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <p>Profile data is not available yet.</p>
+  <% end %>
 </section>
