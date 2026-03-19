@@ -3,7 +3,7 @@
 class PagesController < ApplicationController
   before_action :set_profile, only: %i[about experience]
   def home
-    @profile = Profile.includes(:projects, :experiences).first
+    @profile = Profile.includes(:projects, :experiences).order(created_at: :desc).first
     @featured_projects = published_projects.featured.ordered.limit(3)
     @recent_experiences = experiences.recent.limit(3)
   end

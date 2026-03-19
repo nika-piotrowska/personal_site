@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_profile
-    @profile = Profile.first
+    @profile = Profile.order(created_at: :desc).first
   end
 
   def set_project

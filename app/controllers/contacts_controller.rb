@@ -2,6 +2,6 @@
 
 class ContactsController < ApplicationController
   def show
-    @profile = Profile.first
+    @profile = Profile.order(created_at: :desc).first
   end
 end
