@@ -6,33 +6,51 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="admin-layout">
-    <div class="container-fluid">
-      <div class="row min-vh-100">
-        <aside class="col-md-3 col-lg-2 border-end bg-light p-4">
-          <h1 class="h4 mb-4">Admin Panel</h1>
+    <div class="admin-shell">
+      <aside class="admin-sidebar">
+        <div class="admin-sidebar__inner">
+          <div class="admin-sidebar__top">
+            <div class="admin-brand">
+              <p class="admin-brand__eyebrow">Personal Site</p>
+              <h1 class="admin-brand__title">Admin Panel</h1>
+            </div>
 
-          <nav class="nav flex-column gap-2">
-            <%= link_to 'Dashboard', admin_root_path, class: 'nav-link px-0' %>
-            <%= link_to 'Profile', admin_profile_path, class: 'nav-link px-0' %>
-            <%= link_to 'Projects', admin_projects_path, class: 'nav-link px-0' %>
-            <%= link_to 'Experience', admin_experiences_path, class: 'nav-link px-0' %>
-            <%= link_to 'Public site', root_path, class: 'nav-link px-0' %>
-          </nav>
-        </aside>
+            <div class="admin-sidebar__nav">
+              <%= render "admin/shared/navigation" %>
+            </div>
+          </div>
 
-        <main class="col-md-9 col-lg-10 p-4">
+          <div class="admin-sidebar__footer">
+            <% if user_signed_in? %>
+              <p class="admin-sidebar__user">
+                Logged in as <strong><%= current_user.email %></strong>
+              </p>
+
+              <%= link_to "Logout",
+                          destroy_user_session_path,
+                          data: { turbo_method: :delete },
+                          class: "admin-logout-button" %>
+            <% end %>
+          </div>
+        </div>
+      </aside>
+
+      <main class="admin-main">
+        <div class="admin-content">
           <% flash.each do |key, message| %>
-            <div class="alert alert-info"><%= message %></div>
+            <div class="alert alert-info mb-4">
+              <%= message %>
+            </div>
           <% end %>
 
           <%= yield %>
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   </body>
 </html>

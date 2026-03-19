@@ -1,0 +1,23 @@
+<nav class="admin-nav nav flex-column gap-2">
+  <%= link_to admin_root_path, class: admin_nav_link_class(admin_root_path, controller_name: 'admin/dashboard') do %>
+    <span>Dashboard</span>
+  <% end %>
+
+  <%= link_to admin_profile_path, class: admin_nav_link_class(admin_profile_path, controller_name: 'admin/profiles') do %>
+    <span>Profile</span>
+  <% end %>
+
+  <%= link_to admin_projects_path, class: admin_nav_link_class(admin_projects_path, controller_name: 'admin/projects') do %>
+    <span>Projects</span>
+  <% end %>
+
+  <%= link_to admin_experiences_path, class: admin_nav_link_class(admin_experiences_path, controller_name: 'admin/experiences') do %>
+    <span>Experiences</span>
+  <% end %>
+
+  <hr class="my-3">
+
+  <%= link_to root_path, class: 'admin-nav__link' do %>
+    <span>Public site</span>
+  <% end %>
+</nav>
