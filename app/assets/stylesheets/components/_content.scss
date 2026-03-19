@@ -20,7 +20,7 @@
 }
 
 .page-intro {
-  max-width: 720px;
+  max-width: fit-content;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -60,6 +60,7 @@
 
 .content-card--large {
   padding: 2rem;
+  margin-top: 1rem;
 }
 
 .content-card--featured {

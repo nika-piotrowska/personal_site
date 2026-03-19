@@ -1,47 +1,53 @@
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="admin-page-header">
   <div>
-    <h2 class="mb-1">Projects</h2>
-    <p class="text-muted mb-0">Mock list of portfolio projects.</p>
+    <h2 class="admin-page-header__title">Projects</h2>
+    <p class="admin-page-header__description">
+      Manage portfolio projects displayed on the website.
+    </p>
   </div>
 
-  <%= link_to 'New project', new_admin_project_path, class: 'btn btn-primary' %>
+  <div>
+    <%= link_to "New project", new_admin_project_path, class: "admin-button admin-button--primary" %>
+  </div>
 </div>
 
-<div class="card">
-  <div class="table-responsive">
-    <table class="table mb-0 align-middle">
+<% if @projects.any? %>
+  <div class="admin-table-wrapper">
+    <table class="admin-table">
       <thead>
         <tr>
           <th>Title</th>
-          <th>Status</th>
+          <th>Published</th>
           <th>Featured</th>
           <th>Position</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Personal Site CMS</td>
-          <td><span class="badge text-bg-success">Published</span></td>
-          <td>Yes</td>
-          <td>1</td>
-          <td class="text-end">
-            <%= link_to 'Show', admin_project_path(1), class: 'btn btn-sm btn-outline-secondary' %>
-            <%= link_to 'Edit', edit_admin_project_path(1), class: 'btn btn-sm btn-outline-primary' %>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Tor Exit Nodes API</td>
-          <td><span class="badge text-bg-secondary">Draft</span></td>
-          <td>No</td>
-          <td>2</td>
-          <td class="text-end">
-            <%= link_to 'Show', admin_project_path(2), class: 'btn btn-sm btn-outline-secondary' %>
-            <%= link_to 'Edit', edit_admin_project_path(2), class: 'btn btn-sm btn-outline-primary' %>
-          </td>
-        </tr>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= project.title %></td>
+            <td><%= project.published? ? "Yes" : "No" %></td>
+            <td><%= project.featured? ? "Yes" : "No" %></td>
+            <td><%= project.position %></td>
+            <td class="admin-table__actions">
+              <%= link_to "Show", admin_project_path(project.slug), class: "admin-button" %>
+              <%= link_to "Edit", edit_admin_project_path(project.slug), class: "admin-button" %>
+              <%= link_to "Delete",
+                          admin_project_path(project.slug),
+                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                          class: "admin-button admin-button--danger" %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
-</div>
+<% else %>
+  <div class="admin-card">
+    <div class="admin-card__body">
+      <p>No projects added yet.</p>
+      <%= link_to "Create first project", new_admin_project_path, class: "admin-button admin-button--primary" %>
+    </div>
+  </div>
+<% end %>

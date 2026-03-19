@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'dashboard#index'
 
-    resource :profile, only: %i[show edit]
-    resources :projects, only: %i[index show new edit]
-    resources :experiences, only: %i[index show new edit]
+    resource :profile, only: %i[show new create edit update]
+    resources :projects
+    resources :experiences
   end
 end

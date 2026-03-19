@@ -1,31 +1,72 @@
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="admin-page-header">
   <div>
-    <h2 class="mb-1">Profile</h2>
-    <p class="text-muted mb-0">Preview of your profile data.</p>
+    <h2 class="admin-page-header__title">Profile</h2>
+    <p class="admin-page-header__description">
+      Manage your personal information displayed on the portfolio website.
+    </p>
   </div>
 
-  <%= link_to 'Edit profile', edit_admin_profile_path, class: 'btn btn-primary' %>
-</div>
-
-<div class="card">
-  <div class="card-body">
-    <dl class="row mb-0">
-      <dt class="col-sm-3">Full name</dt>
-      <dd class="col-sm-9">Weronika Piotrowska</dd>
-
-      <dt class="col-sm-3">Headline</dt>
-      <dd class="col-sm-9">Ruby on Rails Developer</dd>
-
-      <dt class="col-sm-3">Location</dt>
-      <dd class="col-sm-9">Poland</dd>
-
-      <dt class="col-sm-3">Email</dt>
-      <dd class="col-sm-9">weronika@example.com</dd>
-
-      <dt class="col-sm-3">Bio</dt>
-      <dd class="col-sm-9">
-        Short professional bio placeholder for admin preview.
-      </dd>
-    </dl>
+  <div>
+    <% if @profile.present? %>
+      <%= link_to "Edit profile", edit_admin_profile_path, class: "admin-button admin-button--primary" %>
+    <% end %>
   </div>
 </div>
+
+<% if @profile.present? %>
+  <div class="admin-card">
+    <div class="admin-card__body">
+      <dl class="admin-details">
+        <div class="admin-details__row">
+          <dt>Headline</dt>
+          <dd><%= @profile.headline.presence || "—" %></dd>
+        </div>
+
+        <div class="admin-details__row">
+          <dt>Email</dt>
+          <dd><%= @profile.email.presence || "—" %></dd>
+        </div>
+
+        <div class="admin-details__row">
+          <dt>Location</dt>
+          <dd><%= @profile.location.presence || "—" %></dd>
+        </div>
+
+        <div class="admin-details__row">
+          <dt>LinkedIn</dt>
+          <dd>
+            <% if @profile.linkedin_url.present? %>
+              <%= link_to @profile.linkedin_url, @profile.linkedin_url, target: "_blank", rel: "noopener" %>
+            <% else %>
+              —
+            <% end %>
+          </dd>
+        </div>
+
+        <div class="admin-details__row">
+          <dt>GitHub</dt>
+          <dd>
+            <% if @profile.github_url.present? %>
+              <%= link_to @profile.github_url, @profile.github_url, target: "_blank", rel: "noopener" %>
+            <% else %>
+              —
+            <% end %>
+          </dd>
+        </div>
+
+        <div class="admin-details__row admin-details__row--stacked">
+          <dt>Bio</dt>
+          <dd><%= simple_format(@profile.bio.presence || "—") %></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+<% else %>
+  <div class="admin-card">
+    <div class="admin-card__body">
+      <p>You have not created your profile yet.</p>
+
+      <%= link_to "Create profile", new_admin_profile_path, class: "admin-button admin-button--primary" %>
+    </div>
+  </div>
+<% end %>
