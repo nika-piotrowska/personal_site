@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="mb-1">Project details</h2>
+    <p class="text-muted mb-0">Mock preview of a single project.</p>
+  </div>
+
+  <%= link_to 'Edit project', edit_admin_project_path(params[:id]), class: 'btn btn-primary' %>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h3 class="h5">Personal Site CMS</h3>
+    <p class="text-muted">Portfolio website with custom admin panel.</p>
+
+    <dl class="row mb-0">
+      <dt class="col-sm-3">Slug</dt>
+      <dd class="col-sm-9">personal-site-cms</dd>
+
+      <dt class="col-sm-3">Tech stack</dt>
+      <dd class="col-sm-9">Ruby on Rails, PostgreSQL, Turbo, Bootstrap</dd>
+
+      <dt class="col-sm-3">Repository</dt>
+      <dd class="col-sm-9">github.com/example/project</dd>
+
+      <dt class="col-sm-3">Live URL</dt>
+      <dd class="col-sm-9">example.com</dd>
+
+      <dt class="col-sm-3">Description</dt>
+      <dd class="col-sm-9">Mock detailed project description.</dd>
+    </dl>
+  </div>
+</div>

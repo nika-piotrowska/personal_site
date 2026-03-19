@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin | Personal Site</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="admin-layout">
+    <div class="admin-shell">
+      <aside class="admin-sidebar">
+        <div class="admin-sidebar__inner">
+          <div class="admin-sidebar__top">
+            <div class="admin-brand">
+              <p class="admin-brand__eyebrow">Personal Site</p>
+              <h1 class="admin-brand__title">Admin Panel</h1>
+            </div>
+
+            <div class="admin-sidebar__nav">
+              <%= render "admin/shared/navigation" %>
+            </div>
+          </div>
+
+          <div class="admin-sidebar__footer">
+            <% if user_signed_in? %>
+              <p class="admin-sidebar__user">
+                Logged in as <strong><%= current_user.email %></strong>
+              </p>
+
+              <%= link_to "Logout",
+                          destroy_user_session_path,
+                          data: { turbo_method: :delete },
+                          class: "admin-logout-button" %>
+            <% end %>
+          </div>
+        </div>
+      </aside>
+
+      <main class="admin-main">
+        <div class="admin-content">
+          <% flash.each do |key, message| %>
+            <div class="alert alert-info mb-4">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
