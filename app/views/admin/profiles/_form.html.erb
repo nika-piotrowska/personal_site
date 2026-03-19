@@ -1,0 +1,50 @@
+<% form_url = profile.persisted? ? admin_profile_path : admin_profile_path %>
+<% form_method = profile.persisted? ? :patch : :post %>
+
+<%= form_with model: profile, url: form_url, method: form_method, class: "admin-form" do |f| %>
+  <% if profile.errors.any? %>
+    <div class="admin-form-errors">
+      <h3>Please fix the following errors:</h3>
+      <ul>
+        <% profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="admin-form__group">
+    <%= f.label :headline, class: "admin-form__label" %>
+    <%= f.text_field :headline, class: "admin-form__input" %>
+  </div>
+
+  <div class="admin-form__group">
+    <%= f.label :email, class: "admin-form__label" %>
+    <%= f.email_field :email, class: "admin-form__input" %>
+  </div>
+
+  <div class="admin-form__group">
+    <%= f.label :location, class: "admin-form__label" %>
+    <%= f.text_field :location, class: "admin-form__input" %>
+  </div>
+
+  <div class="admin-form__group">
+    <%= f.label :linkedin_url, class: "admin-form__label" %>
+    <%= f.url_field :linkedin_url, class: "admin-form__input" %>
+  </div>
+
+  <div class="admin-form__group">
+    <%= f.label :github_url, class: "admin-form__label" %>
+    <%= f.url_field :github_url, class: "admin-form__input" %>
+  </div>
+
+  <div class="admin-form__group">
+    <%= f.label :bio, class: "admin-form__label" %>
+    <%= f.text_area :bio, rows: 8, class: "admin-form__textarea" %>
+  </div>
+
+  <div class="admin-form__actions">
+    <%= f.submit "Save", class: "admin-button admin-button--primary" %>
+    <%= link_to "Back", profile.persisted? ? admin_profile_path : admin_root_path, class: "admin-button" %>
+  </div>
+<% end %>

@@ -1,8 +1,14 @@
-<h2 class="mb-1">Edit project</h2>
-<p class="text-muted mb-4">Mock form — update action will be added in stage 2.</p>
+<div class="admin-page-header">
+  <div>
+    <h2 class="admin-page-header__title">Edit project</h2>
+    <p class="admin-page-header__description">
+      Update project content and metadata.
+    </p>
+  </div>
+</div>
 
-<div class="card">
-  <div class="card-body">
-    <%= render 'form' %>
+<div class="admin-card">
+  <div class="admin-card__body">
+    <%= render "form", project: @project %>
   </div>
 </div>

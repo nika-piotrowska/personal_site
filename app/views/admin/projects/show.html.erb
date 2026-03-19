@@ -1,32 +1,81 @@
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="admin-page-header">
   <div>
-    <h2 class="mb-1">Project details</h2>
-    <p class="text-muted mb-0">Mock preview of a single project.</p>
+    <h2 class="admin-page-header__title"><%= @project.title %></h2>
+    <p class="admin-page-header__description">
+      Project details and metadata.
+    </p>
   </div>
 
-  <%= link_to 'Edit project', edit_admin_project_path(params[:id]), class: 'btn btn-primary' %>
+  <div class="admin-page-header__actions">
+    <%= link_to "Edit", edit_admin_project_path(@project.slug), class: "admin-button admin-button--primary" %>
+    <%= link_to "Back", admin_projects_path, class: "admin-button" %>
+  </div>
 </div>
 
-<div class="card">
-  <div class="card-body">
-    <h3 class="h5">Personal Site CMS</h3>
-    <p class="text-muted">Portfolio website with custom admin panel.</p>
+<div class="admin-card">
+  <div class="admin-card__body">
+    <dl class="admin-details">
+      <div class="admin-details__row">
+        <dt>Title</dt>
+        <dd><%= @project.title.presence || "—" %></dd>
+      </div>
 
-    <dl class="row mb-0">
-      <dt class="col-sm-3">Slug</dt>
-      <dd class="col-sm-9">personal-site-cms</dd>
+      <div class="admin-details__row">
+        <dt>Slug</dt>
+        <dd><%= @project.slug.presence || "—" %></dd>
+      </div>
 
-      <dt class="col-sm-3">Tech stack</dt>
-      <dd class="col-sm-9">Ruby on Rails, PostgreSQL, Turbo, Bootstrap</dd>
+      <div class="admin-details__row">
+        <dt>Short description</dt>
+        <dd><%= @project.short_description.presence || "—" %></dd>
+      </div>
 
-      <dt class="col-sm-3">Repository</dt>
-      <dd class="col-sm-9">github.com/example/project</dd>
+      <div class="admin-details__row admin-details__row--stacked">
+        <dt>Description</dt>
+        <dd><%= simple_format(@project.description.presence || "—") %></dd>
+      </div>
 
-      <dt class="col-sm-3">Live URL</dt>
-      <dd class="col-sm-9">example.com</dd>
+      <div class="admin-details__row">
+        <dt>Tech stack</dt>
+        <dd><%= @project.tech_stack.presence || "—" %></dd>
+      </div>
 
-      <dt class="col-sm-3">Description</dt>
-      <dd class="col-sm-9">Mock detailed project description.</dd>
+      <div class="admin-details__row">
+        <dt>Repository URL</dt>
+        <dd>
+          <% if @project.repo_url.present? %>
+            <%= link_to @project.repo_url, @project.repo_url, target: "_blank", rel: "noopener" %>
+          <% else %>
+            —
+          <% end %>
+        </dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt>Live URL</dt>
+        <dd>
+          <% if @project.live_url.present? %>
+            <%= link_to @project.live_url, @project.live_url, target: "_blank", rel: "noopener" %>
+          <% else %>
+            —
+          <% end %>
+        </dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt>Published</dt>
+        <dd><%= @project.published? ? "Yes" : "No" %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt>Featured</dt>
+        <dd><%= @project.featured? ? "Yes" : "No" %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt>Position</dt>
+        <dd><%= @project.position || "—" %></dd>
+      </div>
     </dl>
   </div>
 </div>

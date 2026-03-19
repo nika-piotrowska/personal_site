@@ -1,57 +1,76 @@
-<form>
-  <div class="mb-3">
-    <label class="form-label">Title</label>
-    <input type="text" class="form-control" value="Personal Site CMS" disabled>
+<% form_url = project.persisted? && project.slug.present? ? admin_project_path(project.slug) : admin_projects_path %>
+<% form_method = project.persisted? ? :patch : :post %>
+
+<%= form_with model: project, url: form_url, method: form_method, class: "admin-form" do |f| %>
+  <% if project.errors.any? %>
+    <div class="admin-form-errors">
+      <h3>Please fix the following errors:</h3>
+      <ul>
+        <% project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="admin-form__group">
+    <%= f.label :title, class: "admin-form__label" %>
+    <%= f.text_field :title, class: "admin-form__input" %>
   </div>
 
-  <div class="mb-3">
-    <label class="form-label">Slug</label>
-    <input type="text" class="form-control" value="personal-site-cms" disabled>
+  <div class="admin-form__group">
+    <%= f.label :slug, class: "admin-form__label" %>
+    <%= f.text_field :slug, class: "admin-form__input" %>
   </div>
 
-  <div class="mb-3">
-    <label class="form-label">Short description</label>
-    <input type="text" class="form-control" value="Portfolio website with admin panel" disabled>
+  <div class="admin-form__group">
+    <%= f.label :position, class: "admin-form__label" %>
+    <%= f.number_field :position, class: "admin-form__input", min: 1 %>
   </div>
 
-  <div class="mb-3">
-    <label class="form-label">Description</label>
-    <textarea class="form-control" rows="5" disabled>Mock description</textarea>
+  <div class="admin-form__group">
+    <%= f.label :short_description, class: "admin-form__label" %>
+    <%= f.text_area :short_description, rows: 3, class: "admin-form__textarea" %>
   </div>
 
-  <div class="mb-3">
-    <label class="form-label">Tech stack</label>
-    <input type="text" class="form-control" value="Ruby on Rails, PostgreSQL" disabled>
+  <div class="admin-form__group">
+    <%= f.label :description, class: "admin-form__label" %>
+    <%= f.text_area :description, rows: 8, class: "admin-form__textarea" %>
   </div>
 
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label class="form-label">Repository URL</label>
-      <input type="text" class="form-control" value="https://github.com/example/repo" disabled>
+  <div class="admin-form__group">
+    <%= f.label :tech_stack, class: "admin-form__label" %>
+    <%= f.text_field :tech_stack, class: "admin-form__input" %>
+  </div>
+
+  <div class="admin-form__group">
+    <%= f.label :repo_url, class: "admin-form__label" %>
+    <%= f.url_field :repo_url, class: "admin-form__input" %>
+  </div>
+
+  <div class="admin-form__group">
+    <%= f.label :live_url, class: "admin-form__label" %>
+    <%= f.url_field :live_url, class: "admin-form__input" %>
+  </div>
+
+  <div class="admin-form__grid admin-form__grid--compact">
+    <div class="admin-form__group admin-form__checkbox-group">
+      <label class="admin-form__checkbox">
+        <%= f.check_box :published %>
+        <span>Published</span>
+      </label>
     </div>
 
-    <div class="col-md-6 mb-3">
-      <label class="form-label">Live URL</label>
-      <input type="text" class="form-control" value="https://example.com" disabled>
+    <div class="admin-form__group admin-form__checkbox-group">
+      <label class="admin-form__checkbox">
+        <%= f.check_box :featured %>
+        <span>Featured</span>
+      </label>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-4 mb-3">
-      <label class="form-label">Position</label>
-      <input type="number" class="form-control" value="1" disabled>
-    </div>
-
-    <div class="col-md-4 mb-3">
-      <label class="form-label">Published</label>
-      <input type="text" class="form-control" value="true" disabled>
-    </div>
-
-    <div class="col-md-4 mb-3">
-      <label class="form-label">Featured</label>
-      <input type="text" class="form-control" value="true" disabled>
-    </div>
+  <div class="admin-form__actions">
+    <%= f.submit "Save", class: "admin-button admin-button--primary" %>
+    <%= link_to "Back", admin_projects_path, class: "admin-button" %>
   </div>
-
-  <button type="button" class="btn btn-primary" disabled>Save project</button>
-</form>
+<% end %>

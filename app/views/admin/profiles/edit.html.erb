@@ -1,39 +1,14 @@
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="admin-page-header">
   <div>
-    <h2 class="mb-1">Edit profile</h2>
-    <p class="text-muted mb-0">Mock form — saving will be added in stage 2.</p>
+    <h2 class="admin-page-header__title">Edit profile</h2>
+    <p class="admin-page-header__description">
+      Update the content visible on your portfolio website.
+    </p>
   </div>
 </div>
 
-<div class="card">
-  <div class="card-body">
-    <form>
-      <div class="mb-3">
-        <label class="form-label">Full name</label>
-        <input type="text" class="form-control" value="Weronika Piotrowska" disabled>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">Headline</label>
-        <input type="text" class="form-control" value="Ruby on Rails Developer" disabled>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" value="weronika@example.com" disabled>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">Location</label>
-        <input type="text" class="form-control" value="Poland" disabled>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">Bio</label>
-        <textarea class="form-control" rows="5" disabled>Short professional bio placeholder.</textarea>
-      </div>
-
-      <button type="button" class="btn btn-primary" disabled>Save changes</button>
-    </form>
+<div class="admin-card">
+  <div class="admin-card__body">
+    <%= render "form", profile: @profile %>
   </div>
 </div>
