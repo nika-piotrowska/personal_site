@@ -7,17 +7,17 @@
       <p><%= simple_format(@profile.bio) %></p>
 
       <div class="profile-links">
-        <% if @profile.github_url.present? %>
+        <% if external_link_to(@profile.github_url).present? %>
           <p>
             <strong>GitHub:</strong>
-            <%= link_to @profile.github_url, @profile.github_url, target: '_blank', rel: 'noopener' %>
+            <%= external_link_to(@profile.github_url) %>
           </p>
         <% end %>
 
-        <% if @profile.linkedin_url.present? %>
+        <% if external_link_to(@profile.linkedin_url).present? %>
           <p>
             <strong>LinkedIn:</strong>
-            <%= link_to @profile.linkedin_url, @profile.linkedin_url, target: '_blank', rel: 'noopener' %>
+            <%= external_link_to(@profile.linkedin_url) %>
           </p>
         <% end %>
 

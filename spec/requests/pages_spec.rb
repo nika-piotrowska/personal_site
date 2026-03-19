@@ -92,8 +92,6 @@ RSpec.describe 'Pages', type: :request do
           :profile,
           bio: 'About page bio content',
           email: 'weronika@example.com',
-          github_url: 'https://github.com/nika-piotrowska',
-          linkedin_url: 'https://linkedin.com/in/nika-piotrowska',
           location: 'Poland'
         )
       end

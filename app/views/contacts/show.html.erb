@@ -19,14 +19,14 @@
       <% if @profile.github_url.present? %>
         <div class="contact-item">
           <span>GitHub</span>
-          <%= link_to @profile.github_url, @profile.github_url, target: '_blank', rel: 'noopener' %>
+          <%= external_link_to(@profile.github_url) %>
         </div>
       <% end %>
 
       <% if @profile.linkedin_url.present? %>
         <div class="contact-item">
           <span>LinkedIn</span>
-          <%= link_to @profile.linkedin_url, @profile.linkedin_url, target: '_blank', rel: 'noopener' %>
+          <%= external_link_to(@profile.linkedin_url) %>
         </div>
       <% end %>
     </div>
