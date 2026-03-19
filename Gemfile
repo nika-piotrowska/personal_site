@@ -6,6 +6,7 @@ ruby '3.4.8'
 
 gem 'acts_as_list', '~> 1.2', '>= 1.2.6'
 gem 'bootsnap', require: false
+gem 'dartsass-rails', '~> 0.5.1'
 gem 'devise', '~> 5.0', '>= 5.0.3'
 gem 'devise-i18n', '~> 1.16'
 gem 'image_processing', '~> 1.2'

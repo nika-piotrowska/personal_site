@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_18_192931) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_18_221610) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "company", null: false
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.date "end_date"
+    t.string "position", null: false
+    t.bigint "profile_id", null: false
+    t.date "start_date", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_experiences_on_profile_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.text "bio", null: false
@@ -58,6 +70,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_192931) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "experiences", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
 end

@@ -1,0 +1,60 @@
+<section class="page-section">
+  <p class="section-label">Welcome</p>
+
+  <% if @profile.present? %>
+    <h1><%= @profile.headline %></h1>
+
+    <p class="page-intro">
+      <%= @profile.bio %>
+    </p>
+
+    <div class="profile-meta">
+      <% if @profile.location.present? %>
+        <span><%= @profile.location %></span>
+      <% end %>
+
+      <span><%= mail_to @profile.email %></span>
+    </div>
+  <% else %>
+    <h1>Personal site</h1>
+    <p class="page-intro">Profile data is not available yet.</p>
+  <% end %>
+</section>
+
+<section class="page-section">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Projects</p>
+      <h2>Featured work</h2>
+    </div>
+
+    <%= link_to 'View all', projects_path, class: 'text-link' %>
+  </div>
+
+  <% if @featured_projects.any? %>
+    <div class="projects-grid">
+      <%= render partial: 'projects/project_card', collection: @featured_projects, as: :project %>
+    </div>
+  <% else %>
+    <p>No featured projects available yet.</p>
+  <% end %>
+</section>
+
+<section class="page-section">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Experience</p>
+      <h2>Recent roles</h2>
+    </div>
+
+    <%= link_to 'View all', experience_path, class: 'text-link' %>
+  </div>
+
+  <% if @recent_experiences.any? %>
+    <div class="content-list">
+      <%= render partial: 'pages/experience_card', collection: @recent_experiences, as: :experience %>
+    </div>
+  <% else %>
+    <p>No experience entries available yet.</p>
+  <% end %>
+</section>

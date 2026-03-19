@@ -1,0 +1,17 @@
+<article class="content-card <%= 'content-card--featured' if project.featured? %>">
+  <div class="card-header">
+    <div>
+      <h2>
+        <%= link_to project.title, project_path(project), class: 'card-title-link' %>
+      </h2>
+    </div>
+  </div>
+
+  <p><%= project.short_description %></p>
+
+  <% if project.tech_stack.present? %>
+    <p class="card-meta">
+      <strong>Stack:</strong> <%= project.tech_stack %>
+    </p>
+  <% end %>
+</article>
