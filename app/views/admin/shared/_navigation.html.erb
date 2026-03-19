@@ -1,23 +1,23 @@
 <nav class="admin-nav nav flex-column gap-2">
-  <%= link_to admin_root_path, class: admin_nav_link_class(admin_root_path, controller_name: 'admin/dashboard') do %>
-    <span>Dashboard</span>
+  <%= link_to admin_root_path, class: admin_nav_link_class(admin_root_path, controller_name: "admin/dashboard") do %>
+    <span><%= t("admin.navigation.dashboard") %></span>
   <% end %>
 
-  <%= link_to admin_profile_path, class: admin_nav_link_class(admin_profile_path, controller_name: 'admin/profiles') do %>
-    <span>Profile</span>
+  <%= link_to admin_profile_path, class: admin_nav_link_class(admin_profile_path, controller_name: "admin/profiles") do %>
+    <span><%= t("admin.navigation.profile") %></span>
   <% end %>
 
-  <%= link_to admin_projects_path, class: admin_nav_link_class(admin_projects_path, controller_name: 'admin/projects') do %>
-    <span>Projects</span>
+  <%= link_to admin_projects_path, class: admin_nav_link_class(admin_projects_path, controller_name: "admin/projects") do %>
+    <span><%= t("admin.navigation.projects") %></span>
   <% end %>
 
-  <%= link_to admin_experiences_path, class: admin_nav_link_class(admin_experiences_path, controller_name: 'admin/experiences') do %>
-    <span>Experiences</span>
+  <%= link_to admin_experiences_path, class: admin_nav_link_class(admin_experiences_path, controller_name: "admin/experiences") do %>
+    <span><%= t("admin.navigation.experiences") %></span>
   <% end %>
 
   <hr class="my-3">
 
-  <%= link_to root_path, class: 'admin-nav__link' do %>
-    <span>Public site</span>
+ <%= link_to root_path, class: "admin-nav__link" do %>
+    <span><%= t("common.public_site") %></span>
   <% end %>
 </nav>

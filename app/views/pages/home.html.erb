@@ -1,5 +1,5 @@
 <section class="page-section">
-  <p class="section-label">Welcome</p>
+  <p class="section-label"><%= t(".welcome") %></p>
 
   <% if @profile.present? %>
     <h1><%= @profile.headline %></h1>
@@ -16,19 +16,19 @@
       <span><%= mail_to @profile.email %></span>
     </div>
   <% else %>
-    <h1>Personal site</h1>
-    <p class="page-intro">Profile data is not available yet.</p>
+    <h1><%= t(".fallback_title") %></h1>
+    <p class="page-intro"><%= t("common.profile_unavailable") %></p>
   <% end %>
 </section>
 
 <section class="page-section">
   <div class="section-header">
     <div>
-      <p class="section-label">Projects</p>
-      <h2>Featured work</h2>
+      <p class="section-label"><%= t(".projects_label") %></p>
+      <h2><%= t(".featured_work") %></h2>
     </div>
 
-    <%= link_to 'View all', projects_path, class: 'text-link' %>
+    <%= link_to t("common.view_all"), projects_path, class: "text-link" %>
   </div>
 
   <% if @featured_projects.any? %>
@@ -36,18 +36,18 @@
       <%= render partial: 'projects/project_card', collection: @featured_projects, as: :project %>
     </div>
   <% else %>
-    <p>No featured projects available yet.</p>
+    <p><%= t(".no_featured_projects") %></p>
   <% end %>
 </section>
 
 <section class="page-section">
   <div class="section-header">
     <div>
-      <p class="section-label">Experience</p>
-      <h2>Recent roles</h2>
+      <p class="section-label"><%= t(".experience_label") %></p>
+      <h2><%= t(".recent_roles") %></h2>
     </div>
 
-    <%= link_to 'View all', experience_path, class: 'text-link' %>
+    <%= link_to t("common.view_all"), experience_path, class: "text-link" %>
   </div>
 
   <% if @recent_experiences.any? %>
@@ -55,6 +55,6 @@
       <%= render partial: 'pages/experience_card', collection: @recent_experiences, as: :experience %>
     </div>
   <% else %>
-    <p>No experience entries available yet.</p>
+    <p><%= t(".no_experience") %></p>
   <% end %>
 </section>

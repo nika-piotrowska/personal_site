@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin | Personal Site</title>
+    <title><%= t("meta.admin_title", site_name: t("app.site_name")) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,8 +16,8 @@
         <div class="admin-sidebar__inner">
           <div class="admin-sidebar__top">
             <div class="admin-brand">
-              <p class="admin-brand__eyebrow">Personal Site</p>
-              <h1 class="admin-brand__title">Admin Panel</h1>
+              <p class="admin-brand__eyebrow"><%= t("admin.brand.eyebrow") %></p>
+              <h1 class="admin-brand__title"><%= t("admin.brand.title") %></h1>
             </div>
 
             <div class="admin-sidebar__nav">
@@ -28,10 +28,10 @@
           <div class="admin-sidebar__footer">
             <% if user_signed_in? %>
               <p class="admin-sidebar__user">
-                Logged in as <strong><%= current_user.email %></strong>
+                <%= t("common.logged_in_as", email: current_user.email) %>
               </p>
 
-              <%= link_to "Logout",
+              <%= link_to t("common.logout"),
                           destroy_user_session_path,
                           data: { turbo_method: :delete },
                           class: "admin-logout-button" %>

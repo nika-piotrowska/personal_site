@@ -21,7 +21,7 @@ module Admin
       @project = @profile.projects.new(project_params)
 
       if @project.save
-        redirect_to admin_projects_path, notice: 'Project created.'
+        redirect_to admin_projects_path, notice: t('admin.flash.projects.created')
       else
         render :new, status: :unprocessable_content
       end
@@ -29,7 +29,7 @@ module Admin
 
     def update
       if @project.update(project_params)
-        redirect_to admin_projects_path, notice: 'Project updated.'
+        redirect_to admin_projects_path, notice: t('admin.flash.projects.updated')
       else
         render :edit, status: :unprocessable_content
       end
@@ -37,7 +37,7 @@ module Admin
 
     def destroy
       @project.destroy
-      redirect_to admin_projects_path, notice: 'Project deleted.'
+      redirect_to admin_projects_path, notice: t('admin.flash.projects.deleted')
     end
 
     private

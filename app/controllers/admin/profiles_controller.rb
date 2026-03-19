@@ -19,7 +19,7 @@ module Admin
       @profile = current_user.build_profile(profile_params)
 
       if @profile.save
-        redirect_to admin_profile_path, notice: 'Profile created successfully.'
+        redirect_to admin_profile_path, notice: t('admin.flash.profiles.created')
       else
         render :new, status: :unprocessable_content
       end
@@ -27,7 +27,7 @@ module Admin
 
     def update
       if @profile.update(profile_params)
-        redirect_to admin_profile_path, notice: 'Profile updated successfully.'
+        redirect_to admin_profile_path, notice: t('admin.flash.profiles.updated')
       else
         render :edit, status: :unprocessable_content
       end

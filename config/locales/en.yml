@@ -1,31 +1,188 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
   hello: "Hello world"
+  app:
+    owner_name: "Weronika Piotrowska"
+    site_name: "Personal Site"
+  meta:
+    application_title: "%{owner} | %{site_name}"
+    admin_title: "Admin | %{site_name}"
+    navigation_aria_label: "Main navigation"
+  common:
+    back: "Back"
+    create_first_experience: "Create first experience"
+    create_first_project: "Create first project"
+    create_profile: "Create profile"
+    delete: "Delete"
+    edit: "Edit"
+    errors_heading: "Please fix the following errors:"
+    live_demo: "Live demo"
+    logged_in_as: "Logged in as %{email}"
+    logout: "Logout"
+    no: "No"
+    none: "—"
+    public_site: "Public site"
+    present: "Present"
+    profile_unavailable: "Profile data is not available yet."
+    repository: "Repository"
+    save: "Save"
+    show: "Show"
+    stack: "Stack:"
+    view_all: "View all"
+    yes: "Yes"
+  navigation:
+    about: "About"
+    contact: "Contact"
+    experience: "Experience"
+    projects: "Projects"
+  pages:
+    home:
+      welcome: "Welcome"
+      fallback_title: "Personal site"
+      projects_label: "Projects"
+      featured_work: "Featured work"
+      no_featured_projects: "No featured projects available yet."
+      experience_label: "Experience"
+      recent_roles: "Recent roles"
+      no_experience: "No experience entries available yet."
+    about:
+      label: "About"
+      title: "About me"
+      github: "GitHub:"
+      linkedin: "LinkedIn:"
+      email: "Email:"
+      location: "Location:"
+    experience:
+      label: "Experience"
+      title: "Work history"
+      empty: "No experience entries available yet."
+    contact:
+      label: "Contact"
+      title: "Get in touch"
+      intro: "If you’d like to talk about a project, collaboration or just say hi — feel free to reach out through any of the channels below."
+      email: "Email"
+      github: "GitHub"
+      linkedin: "LinkedIn"
+  projects:
+    index:
+      label: "Projects"
+      title: "Selected projects"
+      empty: "No projects available yet."
+    show:
+      back: "← Back to projects"
+      label: "Project"
+  admin:
+    brand:
+      eyebrow: "Personal Site"
+      title: "Admin Panel"
+    navigation:
+      dashboard: "Dashboard"
+      experiences: "Experiences"
+      profile: "Profile"
+      projects: "Projects"
+    dashboard:
+      index:
+        title: "Dashboard"
+        description: "Manage your portfolio content."
+        profile:
+          title: "Profile"
+          description: "Edit your personal information and bio."
+          action: "View profile"
+        projects:
+          title: "Projects"
+          description: "Preview future project management screens."
+          action: "View projects"
+        experience:
+          title: "Experience"
+          description: "Preview future experience management screens."
+          action: "View experience"
+    profiles:
+      show:
+        title: "Profile"
+        description: "Manage your personal information displayed on the portfolio website."
+        edit: "Edit profile"
+        empty: "You have not created your profile yet."
+      new:
+        title: "Create profile"
+        description: "Add your personal details for the portfolio website."
+      edit:
+        title: "Edit profile"
+        description: "Update the content visible on your portfolio website."
+      form:
+        back: "Back"
+    projects:
+      index:
+        title: "Projects"
+        description: "Manage portfolio projects displayed on the website."
+        new: "New project"
+        empty: "No projects added yet."
+      new:
+        title: "New project"
+        description: "Add a new project to your portfolio."
+      edit:
+        title: "Edit project"
+        description: "Update project content and metadata."
+      show:
+        description: "Project details and metadata."
+      form:
+        back: "Back"
+    experiences:
+      index:
+        title: "Experiences"
+        description: "Manage your work experience entries."
+        new: "New experience"
+        empty: "No experiences added yet."
+      new:
+        title: "New experience"
+        description: "Add a new work experience entry."
+      edit:
+        title: "Edit experience"
+        description: "Update your work experience content."
+      show:
+        description: "Experience details."
+      form:
+        back: "Back"
+    confirm_delete: "Are you sure?"
+    flash:
+      create_profile_first: "Create your profile first."
+      projects:
+        created: "Project created."
+        updated: "Project updated."
+        deleted: "Project deleted."
+      experiences:
+        created: "Experience created successfully."
+        updated: "Experience updated successfully."
+        deleted: "Experience deleted successfully."
+      profiles:
+        created: "Profile created successfully."
+        updated: "Profile updated successfully."
+  activerecord:
+    models:
+      experience: "Experience"
+      profile: "Profile"
+      project: "Project"
+      user: "User"
+    attributes:
+      experience:
+        company: "Company"
+        description: "Description"
+        end_date: "End date"
+        position: "Position"
+        start_date: "Start date"
+      profile:
+        bio: "Bio"
+        email: "Email"
+        github_url: "GitHub"
+        headline: "Headline"
+        linkedin_url: "LinkedIn"
+        location: "Location"
+      project:
+        description: "Description"
+        featured: "Featured"
+        live_url: "Live URL"
+        position: "Position"
+        published: "Published"
+        repo_url: "Repository URL"
+        short_description: "Short description"
+        slug: "Slug"
+        tech_stack: "Tech stack"
+        title: "Title"
