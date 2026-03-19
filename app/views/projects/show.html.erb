@@ -1,1 +1,32 @@
-<h1>Project details</h1>
+<section class="page-section">
+  <%= link_to '← Back to projects', projects_path, class: 'text-link' %>
+
+  <article class="content-card content-card--large">
+    <p class="section-label">Project</p>
+    <h1><%= @project.title %></h1>
+
+    <p class="page-intro"><%= @project.short_description %></p>
+
+    <% if @project.tech_stack.present? %>
+      <p class="card-meta">
+        <strong>Stack:</strong> <%= @project.tech_stack %>
+      </p>
+    <% end %>
+
+    <% if @project.description.present? %>
+      <div class="project-description">
+        <%= simple_format(@project.description) %>
+      </div>
+    <% end %>
+
+    <div class="project-links">
+      <% if @project.repo_url.present? %>
+        <%= link_to 'Repository', @project.repo_url, target: '_blank', rel: 'noopener', class: 'text-link' %>
+      <% end %>
+
+      <% if @project.live_url.present? %>
+        <%= link_to 'Live demo', @project.live_url, target: '_blank', rel: 'noopener', class: 'text-link' %>
+      <% end %>
+    </div>
+  </article>
+</section>

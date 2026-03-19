@@ -14,6 +14,5 @@ Rails.application.routes.draw do
 
   resources :projects, only: %i[index show]
 
-  get '/contact', to: 'contacts#new'
-  post '/contact', to: 'contacts#create'
+  get '/contact', to: 'contacts#show'
 end

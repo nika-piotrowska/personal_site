@@ -1,0 +1,34 @@
+<section class="page-section">
+  <p class="section-label">Contact</p>
+  <h1>Get in touch</h1>
+
+  <div class="content-card">
+    <p class="page-intro">
+      If you’d like to talk about a project, collaboration or just say hi —
+      feel free to reach out through any of the channels below.
+    </p>
+
+    <div class="contact-list">
+      <% if @profile.email.present? %>
+        <div class="contact-item">
+          <span>Email</span>
+          <%= mail_to @profile.email %>
+        </div>
+      <% end %>
+
+      <% if @profile.github_url.present? %>
+        <div class="contact-item">
+          <span>GitHub</span>
+          <%= link_to @profile.github_url, @profile.github_url, target: '_blank', rel: 'noopener' %>
+        </div>
+      <% end %>
+
+      <% if @profile.linkedin_url.present? %>
+        <div class="contact-item">
+          <span>LinkedIn</span>
+          <%= link_to @profile.linkedin_url, @profile.linkedin_url, target: '_blank', rel: 'noopener' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

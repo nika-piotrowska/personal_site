@@ -1,2 +1,12 @@
-<h1>Projects</h1>
-<p>Projects list coming soon</p>
+<section class="page-section">
+  <p class="section-label">Projects</p>
+  <h1>Selected projects</h1>
+
+  <% if @projects.any? %>
+    <div class="card-grid">
+      <%= render partial: 'project_card', collection: @projects, as: :project %>
+    </div>
+  <% else %>
+    <p>No projects available yet.</p>
+  <% end %>
+</section>

@@ -1,2 +1,56 @@
-<h1>Home</h1>
-<p>Welcome to my personal site</p>
+<section class="page-section">
+  <p class="section-label">Welcome</p>
+  <h1><%= @profile.headline %></h1>
+
+  <p class="page-intro">
+    <%= @profile.bio %>
+  </p>
+
+  <div class="profile-meta">
+    <% if @profile.location.present? %>
+      <span><%= @profile.location %></span>
+    <% end %>
+
+    <% if @profile.email.present? %>
+      <span><%= mail_to @profile.email %></span>
+    <% end %>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Projects</p>
+      <h2>Featured work</h2>
+    </div>
+
+    <%= link_to 'View all', projects_path, class: 'text-link' %>
+  </div>
+
+  <% if @featured_projects.any? %>
+    <div class="card-grid">
+      <%= render partial: 'projects/project_card', collection: @featured_projects, as: :project %>
+    </div>
+  <% else %>
+    <p>No featured projects available yet.</p>
+  <% end %>
+</section>
+
+<section class="page-section">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Experience</p>
+      <h2>Recent roles</h2>
+    </div>
+
+    <%= link_to 'View all', experience_path, class: 'text-link' %>
+  </div>
+
+  <% if @recent_experiences.any? %>
+    <div class="content-list">
+      <%= render partial: 'pages/experience_card', collection: @recent_experiences, as: :experience %>
+    </div>
+  <% else %>
+    <p>No experience entries available yet.</p>
+  <% end %>
+</section>

@@ -9,6 +9,8 @@ class Project < ApplicationRecord
   validates :slug, uniqueness: true
 
   scope :ordered, -> { order(position: :asc) }
+  scope :published, -> { where(published: true) }
+  scope :featured, -> { where(featured: true) }
 
   def to_param
     slug
