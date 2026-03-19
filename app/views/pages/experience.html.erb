@@ -1,0 +1,12 @@
+<section class="page-section">
+  <p class="section-label">Experience</p>
+  <h1>Work history</h1>
+
+  <% if @experiences.any? %>
+    <div class="content-list">
+      <%= render partial: 'experience_card', collection: @experiences, as: :experience %>
+    </div>
+  <% else %>
+    <p>No experience entries available yet.</p>
+  <% end %>
+</section>

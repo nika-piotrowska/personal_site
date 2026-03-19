@@ -1,0 +1,40 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  backdrop-filter: blur(10px);
+  background: rgba(13, 17, 23, 0.9);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__inner {
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
+.site-logo {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-nav__link {
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.site-nav__link:hover {
+  color: var(--accent);
+}

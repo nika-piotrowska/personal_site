@@ -1,0 +1,14 @@
+<article class="content-card">
+  <div class="card-header">
+    <div>
+      <h2><%= experience.position %></h2>
+      <p class="card-subtitle"><%= experience.company %></p>
+    </div>
+
+    <p class="card-period"><%= experience_period(experience) %></p>
+  </div>
+
+  <% if experience.description.present? %>
+    <p><%= simple_format(experience.description) %></p>
+  <% end %>
+</article>
