@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   private
 
   def current_profile
-    @current_profile ||= Profile.first
+    @current_profile ||= Profile.order(created_at: :desc).first
   end
 
   def published_projects
@@ -33,6 +33,6 @@ class PagesController < ApplicationController
   end
 
   def set_profile
-    @profile = Profile.first
+    @profile = Profile.order(created_at: :desc).first
   end
 end
