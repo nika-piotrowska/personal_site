@@ -11,8 +11,14 @@ Rails.application.routes.draw do
 
   get '/about', to: 'pages#about'
   get '/experience', to: 'pages#experience'
-
+  get '/contact', to: 'contacts#show'
   resources :projects, only: %i[index show]
 
-  get '/contact', to: 'contacts#show'
+  namespace :admin do
+    root 'dashboard#index'
+
+    resource :profile, only: %i[show edit]
+    resources :projects, only: %i[index show new edit]
+    resources :experiences, only: %i[index show new edit]
+  end
 end

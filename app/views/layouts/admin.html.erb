@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin | Personal Site</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="admin-layout">
+    <div class="container-fluid">
+      <div class="row min-vh-100">
+        <aside class="col-md-3 col-lg-2 border-end bg-light p-4">
+          <h1 class="h4 mb-4">Admin Panel</h1>
+
+          <nav class="nav flex-column gap-2">
+            <%= link_to 'Dashboard', admin_root_path, class: 'nav-link px-0' %>
+            <%= link_to 'Profile', admin_profile_path, class: 'nav-link px-0' %>
+            <%= link_to 'Projects', admin_projects_path, class: 'nav-link px-0' %>
+            <%= link_to 'Experience', admin_experiences_path, class: 'nav-link px-0' %>
+            <%= link_to 'Public site', root_path, class: 'nav-link px-0' %>
+          </nav>
+        </aside>
+
+        <main class="col-md-9 col-lg-10 p-4">
+          <% flash.each do |key, message| %>
+            <div class="alert alert-info"><%= message %></div>
+          <% end %>
+
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
