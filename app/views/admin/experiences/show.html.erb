@@ -1,0 +1,44 @@
+<div class="admin-page-header">
+  <div>
+    <h2 class="admin-page-header__title"><%= @experience.position %></h2>
+    <p class="admin-page-header__description">
+      <%= t(".description") %>
+    </p>
+  </div>
+
+  <div class="admin-page-header__actions">
+    <%= link_to t("common.edit"), edit_admin_experience_path(@experience), class: "admin-button admin-button--primary" %>
+    <%= link_to t("common.back"), admin_experiences_path, class: "admin-button" %>
+  </div>
+</div>
+
+<div class="admin-card">
+  <div class="admin-card__body">
+    <dl class="admin-details">
+      <div class="admin-details__row">
+        <dt><%= Experience.human_attribute_name(:position) %></dt>
+        <dd><%= @experience.position.presence || t("common.none") %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Experience.human_attribute_name(:company) %></dt>
+        <dd><%= @experience.company.presence || t("common.none") %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Experience.human_attribute_name(:start_date) %></dt>
+        <dd><%= @experience.start_date || t("common.none") %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Experience.human_attribute_name(:end_date) %></dt>
+        <dd><%= @experience.end_date || t("common.none") %></dd>
+      </div>
+
+      <div class="admin-details__row admin-details__row--stacked">
+        <dt><%= Experience.human_attribute_name(:description) %></dt>
+        <dd><%= simple_format(@experience.description.presence || t("common.none")) %></dd>
+      </div>
+    </dl>
+  </div>
+</div>

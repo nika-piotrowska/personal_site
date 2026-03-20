@@ -1,0 +1,53 @@
+<div class="admin-page-header">
+  <div>
+    <h2 class="admin-page-header__title"><%= t(".title") %></h2>
+    <p class="admin-page-header__description">
+      <%= t(".description") %>
+    </p>
+  </div>
+
+  <div>
+    <%= link_to t(".new"), new_admin_project_path, class: "admin-button admin-button--primary" %>
+  </div>
+</div>
+
+<% if @projects.any? %>
+  <div class="admin-table-wrapper">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th><%= Project.human_attribute_name(:title) %></th>
+          <th><%= Project.human_attribute_name(:published) %></th>
+          <th><%= Project.human_attribute_name(:featured) %></th>
+          <th><%= Project.human_attribute_name(:position) %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= project.title %></td>
+            <td><%= project.published? ? t("common.yes") : t("common.no") %></td>
+            <td><%= project.featured? ? t("common.yes") : t("common.no") %></td>
+            <td><%= project.position %></td>
+            <td class="admin-table__actions">
+              <%= link_to t("common.show"), admin_project_path(project.slug), class: "admin-button" %>
+              <%= link_to t("common.edit"), edit_admin_project_path(project.slug), class: "admin-button" %>
+              <%= link_to t("common.delete"),
+                          admin_project_path(project.slug),
+                          data: { turbo_method: :delete, turbo_confirm: t("admin.confirm_delete")  },
+                          class: "admin-button admin-button--danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="admin-card">
+    <div class="admin-card__body">
+      <p><%= t(".empty") %></p>
+      <%= link_to t("common.create_first_project"), new_admin_project_path, class: "admin-button admin-button--primary" %>
+    </div>
+  </div>
+<% end %>

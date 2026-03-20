@@ -1,0 +1,14 @@
+<div class="admin-page-header">
+  <div>
+    <h2 class="admin-page-header__title"><%= t(".title") %></h2>
+    <p class="admin-page-header__description">
+      <%= t(".description") %>
+    </p>
+  </div>
+</div>
+
+<div class="admin-card">
+  <div class="admin-card__body">
+    <%= render "form", profile: @profile %>
+  </div>
+</div>

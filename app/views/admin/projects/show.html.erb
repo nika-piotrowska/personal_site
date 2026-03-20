@@ -1,0 +1,81 @@
+<div class="admin-page-header">
+  <div>
+    <h2 class="admin-page-header__title"><%= @project.title %></h2>
+    <p class="admin-page-header__description">
+      <%= t(".description") %>
+    </p>
+  </div>
+
+  <div class="admin-page-header__actions">
+    <%= link_to t("common.edit"), edit_admin_project_path(@project.slug), class: "admin-button admin-button--primary" %>
+    <%= link_to t("common.back"), admin_projects_path, class: "admin-button" %>
+  </div>
+</div>
+
+<div class="admin-card">
+  <div class="admin-card__body">
+    <dl class="admin-details">
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:title) %></dt>
+        <dd><%= @project.title.presence || t("common.none") %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:slug) %></dt>
+        <dd><%= @project.slug.presence || t("common.none") %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:short_description) %></dt>
+        <dd><%= @project.short_description.presence || t("common.none") %></dd>
+      </div>
+
+      <div class="admin-details__row admin-details__row--stacked">
+        <dt><%= Project.human_attribute_name(:description) %></dt>
+        <dd><%= simple_format(@project.description.presence || t("common.none")) %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:tech_stack) %></dt>
+        <dd><%= @project.tech_stack.presence || t("common.none") %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:repo_url) %></dt>
+        <dd>
+          <% if @project.repo_url.present? %>
+            <%= link_to @project.repo_url, @project.repo_url, target: "_blank", rel: "noopener" %>
+          <% else %>
+            <%= t("common.none") %>
+          <% end %>
+        </dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:live_url) %></dt>
+        <dd>
+          <% if @project.live_url.present? %>
+            <%= link_to @project.live_url, @project.live_url, target: "_blank", rel: "noopener" %>
+          <% else %>
+            <%= t("common.none") %>
+          <% end %>
+        </dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:published) %></dt>
+        <dd><%= @project.published? ? t("common.yes") : t("common.no") %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:featured) %></dt>
+        <dd><%= @project.featured? ? t("common.yes") : t("common.no") %></dd>
+      </div>
+
+      <div class="admin-details__row">
+        <dt><%= Project.human_attribute_name(:position) %></dt>
+        <dd><%= @project.position || t("common.none") %></dd>
+      </div>
+    </dl>
+  </div>
+</div>

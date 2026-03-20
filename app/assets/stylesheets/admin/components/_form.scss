@@ -1,0 +1,27 @@
+.admin-form__group + .admin-form__group {
+  margin-top: 1rem;
+}
+
+.admin-form__label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.admin-form__input,
+.admin-form__textarea,
+.admin-form__select {
+  width: stretch;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.admin-form__input:disabled,
+.admin-form__textarea:disabled,
+.admin-form__select:disabled {
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
