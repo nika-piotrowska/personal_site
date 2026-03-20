@@ -1,3 +1,7 @@
+## v1.0.1 (2026-03-20)
+
+- No notable changes
+
 ## v1.0.0 (2026-03-20)
 
 - Merge pull request #6 from nika-piotrowska/feature/update-readme
