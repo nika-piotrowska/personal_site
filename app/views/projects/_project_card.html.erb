@@ -11,7 +11,7 @@
 
   <% if project.tech_stack.present? %>
     <p class="card-meta">
-      <strong>Stack:</strong> <%= project.tech_stack %>
+      <strong><%= t("common.stack") %></strong> <%= project.tech_stack %>
     </p>
   <% end %>
 </article>

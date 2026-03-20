@@ -1,0 +1,139 @@
+.auth-page {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.auth-page__inner {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.auth-card {
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.5rem;
+  background: rgba(8, 12, 24, 0.72);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.auth-card__header {
+  margin-bottom: 1.75rem;
+}
+
+.auth-card__eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.auth-card__title {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.auth-card__description {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.auth-form__group + .auth-form__group {
+  margin-top: 1rem;
+}
+
+.auth-form__label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.auth-form__input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.875rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+}
+
+.auth-form__input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+.auth-form__checkbox {
+  margin-top: 1rem;
+}
+
+.auth-form__checkbox label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.auth-form__actions {
+  margin-top: 1.5rem;
+}
+
+.auth-form__submit {
+  width: 100%;
+  justify-content: center;
+}
+
+.auth-card__links {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.auth-link {
+  color: inherit;
+  opacity: 0.82;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.auth-link:hover {
+  opacity: 1;
+}
+
+.auth-form__submit {
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.04)
+  );
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.auth-form__submit:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.06)
+  );
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.auth-form__submit:active {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.08);
+}

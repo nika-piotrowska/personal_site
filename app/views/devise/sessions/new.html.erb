@@ -1,0 +1,42 @@
+<section class="auth-page">
+  <div class="auth-page__inner">
+    <div class="auth-card">
+      <div class="auth-card__header">
+        <p class="auth-card__eyebrow">Admin access</p>
+        <h1 class="auth-card__title">Log in</h1>
+        <p class="auth-card__description">
+          Sign in to manage your portfolio content.
+        </p>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
+        <div class="auth-form__group">
+          <%= f.label :email, class: "auth-form__label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "auth-form__input" %>
+        </div>
+
+        <div class="auth-form__group">
+          <%= f.label :password, class: "auth-form__label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "auth-form__input" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="auth-form__checkbox">
+            <label>
+              <%= f.check_box :remember_me %>
+              <span>Remember me</span>
+            </label>
+          </div>
+        <% end %>
+
+        <div class="auth-form__actions">
+          <%= f.submit "Log in", class: "button button--primary auth-form__submit" %>
+        </div>
+      <% end %>
+
+      <div class="auth-card__links">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,6 +1,6 @@
 <section class="page-section">
-  <p class="section-label">About</p>
-  <h1>About me</h1>
+  <p class="section-label"><%= t(".label") %></p>
+  <h1><%= t(".title") %></h1>
 
   <% if @profile.present? %>
     <div class="content-card">
@@ -9,34 +9,27 @@
       <div class="profile-links">
         <% if external_link_to(@profile.github_url).present? %>
           <p>
-            <strong>GitHub:</strong>
+            <strong><%= t(".github") %></strong>
             <%= external_link_to(@profile.github_url) %>
           </p>
         <% end %>
 
         <% if external_link_to(@profile.linkedin_url).present? %>
           <p>
-            <strong>LinkedIn:</strong>
+            <strong><%= t(".linkedin") %></strong>
             <%= external_link_to(@profile.linkedin_url) %>
-          </p>
-        <% end %>
-
-        <% if @profile.email.present? %>
-          <p>
-            <strong>Email:</strong>
-            <%= mail_to @profile.email %>
           </p>
         <% end %>
 
         <% if @profile.location.present? %>
           <p>
-            <strong>Location:</strong>
+            <strong><%= t(".location") %></strong>
             <%= @profile.location %>
           </p>
         <% end %>
       </div>
     </div>
   <% else %>
-    <p>Profile data is not available yet.</p>
+    <p><%= t("common.profile_unavailable") %></p>
   <% end %>
 </section>

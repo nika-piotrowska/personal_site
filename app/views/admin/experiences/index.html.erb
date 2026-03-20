@@ -1,0 +1,53 @@
+<div class="admin-page-header">
+  <div>
+    <h2 class="admin-page-header__title"><%= t(".title") %></h2>
+    <p class="admin-page-header__description">
+      <%= t(".description") %>
+    </p>
+  </div>
+
+  <div>
+    <%= link_to t(".new"), new_admin_experience_path, class: "admin-button admin-button--primary" %>
+  </div>
+</div>
+
+<% if @experiences.any? %>
+  <div class="admin-table-wrapper">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th><%= Experience.human_attribute_name(:position) %></th>
+          <th><%= Experience.human_attribute_name(:company) %></th>
+          <th><%= Experience.human_attribute_name(:start_date) %></th>
+          <th><%= Experience.human_attribute_name(:end_date) %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @experiences.each do |experience| %>
+          <tr>
+            <td><%= experience.position %></td>
+            <td><%= experience.company %></td>
+            <td><%= experience.start_date || t("common.none") %></td>
+            <td><%= experience.end_date || t("common.none") %></td>
+            <td class="admin-table__actions">
+              <%= link_to t("common.show"), admin_experience_path(experience), class: "admin-button" %>
+              <%= link_to t("common.edit"), edit_admin_experience_path(experience), class: "admin-button" %>
+              <%= link_to t("common.delete"),
+                          admin_experience_path(experience),
+                          data: { turbo_method: :delete, turbo_confirm: t("admin.confirm_delete")  },
+                          class: "admin-button admin-button--danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="admin-card">
+    <div class="admin-card__body">
+      <p><%= t(".empty") %></p>
+      <%= link_to t("common.create_first_experience"), new_admin_experience_path, class: "admin-button admin-button--primary" %>
+    </div>
+  </div>
+<% end %>

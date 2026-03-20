@@ -1,0 +1,48 @@
+<section class="auth-page">
+  <div class="auth-page__inner">
+    <div class="auth-card">
+      <div class="auth-card__header">
+        <p class="auth-card__eyebrow">Admin access</p>
+        <h1 class="auth-card__title">Sign up</h1>
+        <p class="auth-card__description">
+          Create an account to manage your portfolio.
+        </p>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "auth-form" }) do |f| %>
+
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="auth-form__group">
+          <%= f.label :email, class: "auth-form__label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "auth-form__input" %>
+        </div>
+
+        <div class="auth-form__group">
+          <%= f.label :password, class: "auth-form__label" %>
+          <% if @minimum_password_length %>
+            <p class="auth-form__hint">
+              (<%= @minimum_password_length %> characters minimum)
+            </p>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "auth-form__input" %>
+        </div>
+
+        <div class="auth-form__group">
+          <%= f.label :password_confirmation, class: "auth-form__label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "auth-form__input" %>
+        </div>
+
+        <div class="auth-form__actions">
+          <%= f.submit "Sign up", class: "auth-form__submit" %>
+        </div>
+      <% end %>
+
+      <div class="auth-card__links">
+        <%= link_to "Already have an account? Log in",
+            new_session_path(resource_name),
+            class: "auth-link" %>
+      </div>
+    </div>
+  </div>
+</section>

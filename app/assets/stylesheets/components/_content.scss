@@ -20,7 +20,7 @@
 }
 
 .page-intro {
-  max-width: 720px;
+  max-width: fit-content;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -28,7 +28,7 @@
 .profile-meta,
 .profile-links,
 .project-links {
-  display: flex;
+  display: inline-table;
   flex-wrap: wrap;
   gap: 1rem 1.5rem;
   margin-top: 1.5rem;
@@ -60,9 +60,9 @@
 
 .content-card--large {
   padding: 2rem;
+  margin-top: 1rem;
 }
 
-/* 🔥 FEATURED PROJECT STYLE */
 .content-card--featured {
   border-color: var(--accent);
   background: linear-gradient(
@@ -72,6 +72,7 @@
   );
 
   transform: translateY(-2px);
+  margin-bottom: 1rem;
 }
 
 .content-card--featured .card-title-link {

@@ -1,15 +1,15 @@
 <section class="page-section">
-  <%= link_to '← Back to projects', projects_path, class: 'text-link' %>
+  <%= link_to t(".back"), projects_path, class: "text-link" %>
 
   <article class="content-card content-card--large">
-    <p class="section-label">Project</p>
+    <p class="section-label"><%= t(".label") %></p>
     <h1><%= @project.title %></h1>
 
     <p class="page-intro"><%= @project.short_description %></p>
 
     <% if @project.tech_stack.present? %>
       <p class="card-meta">
-        <strong>Stack:</strong> <%= @project.tech_stack %>
+        <strong><%= t("common.stack") %></strong> <%= @project.tech_stack %>
       </p>
     <% end %>
 
@@ -21,11 +21,11 @@
 
     <div class="project-links">
       <% if @project.repo_url.present? %>
-        <%= link_to 'Repository', @project.repo_url, target: '_blank', rel: 'noopener', class: 'text-link' %>
+        <%= link_to t("common.repository"), @project.repo_url, target: "_blank", rel: "noopener", class: "text-link" %>
       <% end %>
 
       <% if @project.live_url.present? %>
-        <%= link_to 'Live demo', @project.live_url, target: '_blank', rel: 'noopener', class: 'text-link' %>
+        <%= link_to t("common.live_demo"), @project.live_url, target: "_blank", rel: "noopener", class: "text-link" %>
       <% end %>
     </div>
   </article>
