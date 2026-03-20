@@ -28,7 +28,7 @@
 .profile-meta,
 .profile-links,
 .project-links {
-  display: flex;
+  display: inline-table;
   flex-wrap: wrap;
   gap: 1rem 1.5rem;
   margin-top: 1.5rem;

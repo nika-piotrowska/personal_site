@@ -27,6 +27,3 @@ RSpec/ExampleLength:
 
 Naming/VariableNumber:
   EnforcedStyle: normalcase
-
-Rails/I18nLocaleTexts:
-  Enabled: false

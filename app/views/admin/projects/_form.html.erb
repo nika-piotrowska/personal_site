@@ -4,7 +4,7 @@
 <%= form_with model: project, url: form_url, method: form_method, class: "admin-form" do |f| %>
   <% if project.errors.any? %>
     <div class="admin-form-errors">
-      <h3>Please fix the following errors:</h3>
+      <h3><%= t("common.errors_heading") %></h3>
       <ul>
         <% project.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -57,20 +57,20 @@
     <div class="admin-form__group admin-form__checkbox-group">
       <label class="admin-form__checkbox">
         <%= f.check_box :published %>
-        <span>Published</span>
+        <span><%= Project.human_attribute_name(:published) %></span>
       </label>
     </div>
 
     <div class="admin-form__group admin-form__checkbox-group">
       <label class="admin-form__checkbox">
         <%= f.check_box :featured %>
-        <span>Featured</span>
+        <span><%= Project.human_attribute_name(:featured) %></span>
       </label>
     </div>
   </div>
 
   <div class="admin-form__actions">
-    <%= f.submit "Save", class: "admin-button admin-button--primary" %>
-    <%= link_to "Back", admin_projects_path, class: "admin-button" %>
+    <%= f.submit t("common.save"), class: "admin-button admin-button--primary" %>
+    <%= link_to t(".back"), admin_projects_path, class: "admin-button" %>
   </div>
 <% end %>

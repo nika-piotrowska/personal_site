@@ -4,7 +4,7 @@
 <%= form_with model: profile, url: form_url, method: form_method, class: "admin-form" do |f| %>
   <% if profile.errors.any? %>
     <div class="admin-form-errors">
-      <h3>Please fix the following errors:</h3>
+      <h3><%= t("common.errors_heading") %></h3>
       <ul>
         <% profile.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="admin-form__actions">
-    <%= f.submit "Save", class: "admin-button admin-button--primary" %>
-    <%= link_to "Back", profile.persisted? ? admin_profile_path : admin_root_path, class: "admin-button" %>
+    <%= f.submit t("common.save"), class: "admin-button admin-button--primary" %>
+    <%= link_to t(".back"), profile.persisted? ? admin_profile_path : admin_root_path, class: "admin-button" %>
   </div>
 <% end %>

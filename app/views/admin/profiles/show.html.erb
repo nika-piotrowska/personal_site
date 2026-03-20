@@ -1,14 +1,14 @@
 <div class="admin-page-header">
   <div>
-    <h2 class="admin-page-header__title">Profile</h2>
+    <h2 class="admin-page-header__title"><%= t(".title") %></h2>
     <p class="admin-page-header__description">
-      Manage your personal information displayed on the portfolio website.
+      <%= t(".description") %>
     </p>
   </div>
 
   <div>
     <% if @profile.present? %>
-      <%= link_to "Edit profile", edit_admin_profile_path, class: "admin-button admin-button--primary" %>
+      <%= link_to t(".edit"), edit_admin_profile_path, class: "admin-button admin-button--primary" %>
     <% end %>
   </div>
 </div>
@@ -18,45 +18,45 @@
     <div class="admin-card__body">
       <dl class="admin-details">
         <div class="admin-details__row">
-          <dt>Headline</dt>
-          <dd><%= @profile.headline.presence || "—" %></dd>
+          <dt><%= Profile.human_attribute_name(:headline) %></dt>
+          <dd><%= @profile.headline.presence || t("common.none") %></dd>
         </div>
 
         <div class="admin-details__row">
-          <dt>Email</dt>
-          <dd><%= @profile.email.presence || "—" %></dd>
+          <dt><%= Profile.human_attribute_name(:email) %></dt>
+          <dd><%= @profile.email.presence || t("common.none") %></dd>
         </div>
 
         <div class="admin-details__row">
-          <dt>Location</dt>
-          <dd><%= @profile.location.presence || "—" %></dd>
+          <dt><%= Profile.human_attribute_name(:location) %></dt>
+          <dd><%= @profile.location.presence || t("common.none") %></dd>
         </div>
 
         <div class="admin-details__row">
-          <dt>LinkedIn</dt>
+          <dt><%= Profile.human_attribute_name(:linkedin_url) %></dt>
           <dd>
             <% if @profile.linkedin_url.present? %>
               <%= link_to @profile.linkedin_url, @profile.linkedin_url, target: "_blank", rel: "noopener" %>
             <% else %>
-              —
+              <%= t("common.none") %>
             <% end %>
           </dd>
         </div>
 
         <div class="admin-details__row">
-          <dt>GitHub</dt>
+          <dt><%= Profile.human_attribute_name(:github_url) %></dt>
           <dd>
             <% if @profile.github_url.present? %>
               <%= link_to @profile.github_url, @profile.github_url, target: "_blank", rel: "noopener" %>
             <% else %>
-              —
+              <%= t("common.none") %>
             <% end %>
           </dd>
         </div>
 
         <div class="admin-details__row admin-details__row--stacked">
-          <dt>Bio</dt>
-          <dd><%= simple_format(@profile.bio.presence || "—") %></dd>
+          <dt><%= Profile.human_attribute_name(:bio) %></dt>
+          <dd><%= simple_format(@profile.bio.presence || t("common.none")) %></dd>
         </div>
       </dl>
     </div>
@@ -64,9 +64,8 @@
 <% else %>
   <div class="admin-card">
     <div class="admin-card__body">
-      <p>You have not created your profile yet.</p>
-
-      <%= link_to "Create profile", new_admin_profile_path, class: "admin-button admin-button--primary" %>
+      <p><%= t(".empty") %></p>
+      <%= link_to t("common.create_profile"), new_admin_profile_path, class: "admin-button admin-button--primary" %>
     </div>
   </div>
 <% end %>
